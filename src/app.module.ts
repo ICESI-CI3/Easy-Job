@@ -9,7 +9,7 @@ import { ClientProfessionalEntitiesModule } from './client_professional_entities
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { SeedModule } from './seed/seed.module';
-
+import * as fs from 'fs';
 
 @Module({
   imports: [
@@ -22,7 +22,10 @@ import { SeedModule } from './seed/seed.module';
       username: process.env.DB_USER, 
       password: process.env.DB_PASSWORD, 
       autoLoadEntities: true, 
-      synchronize: true 
+      synchronize: true,
+      ssl: {
+        ca: fs.readFileSync('us-east-2-bundle.pem')
+      }
     }),
 
     ClientsModule, 

@@ -70,7 +70,7 @@ export class ReviewService {
   async getReviewsByProfessional(id_professional: string): Promise<Review[]> {
     return this.reviewRepository.find({
       where: { professional: { id: id_professional } },
-      relations: ['professional'],
+      relations: ['client'],
     });
   }
 }

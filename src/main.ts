@@ -3,13 +3,14 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-   // Enable CORS with specific options
+  
   app.enableCors({
-    origin: '*', // Specify the allowed origin
-    credentials: true, // Allow credentials (cookies, authorization headers)
+    origin: '*', // Add your production frontend URL when ready
+    methods: '*',
+    allowedHeaders: '*',
+    credentials: true,
   });
   
-  await app.listen(3001);
+  await app.listen(3000);
 }
 bootstrap();
